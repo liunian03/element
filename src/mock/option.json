@@ -1,0 +1,79 @@
+{
+    "value": "",
+    "statename": "专家状态",
+    "options": [{
+      "value": "选项1",
+      "label": "黄金糕"
+    }, {
+      "value": "选项2",
+      "label": "双皮奶"
+    }, {
+      "value": "选项3",
+      "label": "蚵仔煎"
+    }, {
+      "value": "选项4",
+      "label": "龙须面"
+    }, {
+      "value": "选项5",
+      "label": "北京烤鸭"
+    }],
+    "status": [{
+      "value": "选项1",
+      "label": "编制"
+    }, {
+      "value": "选项2",
+      "label": "审核中"
+    }, {
+      "value": "选项3",
+      "label": "审核驳回"
+    }, {
+      "value": "选项4",
+      "label": "正常"
+    }, {
+      "value": "选项5",
+      "label": "已退库"
+    }],
+  "treeSelect": [{
+    "filterText:": "",
+    "value": [],
+    "props": {
+        "value": "id",
+        "label": "label",
+        "children": "children"
+    },
+    "options":[{
+      "label": "蔬菜",
+      "children": [{
+        "label": "种类",
+        "children": [{
+          "label": "叶子类"
+        }]
+      }]
+      },
+      {
+        "label": "水果",
+        "children": [{
+          "label": "圆的",
+          "children": [{
+            "label": "苹果"
+          }]
+        }]
+      },
+      {
+      "label": "省",
+      "children": [{
+        "label": "南京市",
+        "children": [{
+          "label": "雨花台区"
+        }, {
+          "label": "六合区"
+        }]
+      }, {
+        "label": "徐州市",
+        "children": [{
+          "label": "沛县"
+        }]
+      }]
+    }]
+  }]
+}

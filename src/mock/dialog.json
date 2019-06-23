@@ -1,0 +1,124 @@
+{
+  "dialogFormVisible": false,
+  "dialogForm": false,
+  "ruleForm": {
+    "name": "",
+    "city": "",
+    "region": "",
+    "people": "",
+    "itemNumber": "",
+    "itemName": "",
+    "itemState": "",
+    "itemMethod": "",
+    "itemRe": ""
+  },
+  "rules": {
+    "name": [
+      {
+        "required": true,
+        "message": "请输入单位名称",
+        "trigger": "blur"
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "message": "长度在 3 到 5 个字符",
+        "trigger": "blur"
+      }
+    ],
+    "region": [
+      {
+        "required": true,
+        "message": "请选择活动区域",
+        "trigger": "change"
+      }
+    ],
+    "city": [
+      {
+        "required": true,
+        "message": "请选择所属地市",
+        "trigger": "change"
+      }
+    ],
+    "people": [
+      {
+        "required": true,
+        "message": "请选择员工人数",
+        "trigger": "change"
+      }
+    ],
+    "itemNumber": [
+      {
+        "required": true,
+        "message": "请输入项目编号",
+        "trigger": "blur"
+      }
+    ],
+    "itemName": [
+      {
+        "required": true,
+        "message": "请输入项目名称",
+        "trigger": "change"
+      }
+    ],
+    "itemState": [
+      {
+        "required": true,
+        "message": "请选择状态",
+        "trigger": "change"
+      }
+    ],
+    "itemMethod": [
+      {
+        "required": true,
+        "message": "请选择招标方式",
+        "trigger": "change"
+      }
+    ]
+  },
+  "value": "",
+  "options": [
+    {
+      "value": "选项1",
+      "label": "龙眼"
+    },
+    {
+      "value": "选项2",
+      "label": "双皮奶"
+    },
+    {
+      "value": "选项3",
+      "label": "蚵仔煎"
+    },
+    {
+      "value": "选项4",
+      "label": "龙须面"
+    },
+    {
+      "value": "选项5",
+      "label": "北京烤鸭"
+    }
+  ],
+  "copyoptions": [
+    {
+      "value": "选项1",
+      "label": "龙眼"
+    },
+    {
+      "value": "选项2",
+      "label": "双皮奶"
+    },
+    {
+      "value": "选项3",
+      "label": "蚵仔煎"
+    },
+    {
+      "value": "选项4",
+      "label": "龙须面"
+    },
+    {
+      "value": "选项5",
+      "label": "北京烤鸭"
+    }
+  ]
+}
