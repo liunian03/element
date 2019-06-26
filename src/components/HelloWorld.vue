@@ -1033,7 +1033,7 @@
                 }
             },
 			submitForm(formName) {
-				this.$refs[formName].validate((valid) => {
+				this.$refs[formName].validateChen((valid) => {
 					if(valid) {
 						alert('submit!');
 					} else {

@@ -2,10 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import demo from '@/components/demo'
-import user from "../components/UserMana2"
-import useres from "../components/UserMana"
-import err from "../components/404"
-import message from "../components/message"
 
 // table
 import tab1 from '@/components/BasedTables/tab1'
@@ -175,29 +171,5 @@ export default new Router({
             name: 'HelloWorld',
             component: HelloWorld
         },
-        {
-            path:'/user',
-            name:'UserMana2',
-            component:user,
-        },
-        {
-            path:'/useres',
-            name:'UserMana',
-            component:useres,
-        },
-        {
-            path:'/message',
-            name:'message',
-            component:message,
-        },
-        {
-            path:'/404',
-            name:'404',
-            component:err
-        },
-        // {
-        //     path:'*',
-        //     redirect:'/404'
-        // }
     ]
 })

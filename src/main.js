@@ -17,10 +17,9 @@ Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-
+//全局自定义特殊字符校验指令
 Vue.directive('special',{
     bind: function (el, binding, vnode) {
-
         el.onkeyup = function (e) {
             var e= e|| event;
             if(e.keyCode == 56 || e.keyCode == 106){
