@@ -150,60 +150,54 @@
                         <!--基础用法-->
                         <div v-if="show==1">
                             <p>基础的树形结构展示。</p>
-                            <el-tree :data="data1" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+                            <el-tree :data="grid.data" :props="grid.defaultProps"></el-tree>
                         </div>
                         <!--                    多选-->
                         <div v-if="show==2">
                             <p>可将 Tree 的某些节点设置为默认展开或默认选中</p>
-                            <el-tree :data="data1" show-checkbox node-key="id" :default-expanded-keys="[2, 3]" :default-checked-keys="[5]" :props="defaultProps">
-                        </el-tree>
+                            <el-tree :data="grid.data" show-checkbox node-key="id" :default-expanded-keys="[2, 3]" :default-checked-keys="[5]" :props="grid.defaultProps">
+                            </el-tree>
                         </div>
                         <!--                    树节点的选择-->
                         <div v-if="show==3">
                             <p>树节点的选择</p>
-                            <el-tree :data="data1" show-checkbox default-expand-all node-key="id" ref="tree" highlight-current :props="defaultProps">
+                            <el-tree :data="grid.data" show-checkbox default-expand-all node-key="id" ref="tree" highlight-current :props="grid.defaultProps">
                             </el-tree>
                         </div>
                         <!--                    树节点过滤-->
                         <div v-if="show==4">
                             <p>通过关键字过滤树节点</p>
-                            <el-input placeholder="输入关键字进行过滤" v-model="filterText"></el-input>
+                            <el-input placeholder="输入关键字进行过滤" v-model="grid.filterText">
+                            </el-input>
                             <el-tree class="filter-tree"
-                                     :data="data"
-                                     :props="defaultProps"
-                                     default-expand-all
-                                     :filter-node-method="filterNode"
-                                     ref="tree2">
+                                :data="grid.data"
+                                :props="grid.defaultProps"
+                                default-expand-all
+                                :filter-node-method="filterNode"
+                                ref="tree2">
                             </el-tree>
                         </div>
                         <!--                    可拖拽节点-->
                         <div v-if="show==5">
                             <p>通过 draggable 属性可让节点变为可拖拽</p>
-                            <el-tree :data="data1" node-key="id"
-                                     default-expand-all
-                                     @node-drag-start="handleDragStart"
-                                     @node-drag-enter="handleDragEnter"
-                                     @node-drag-leave="handleDragLeave"
-                                     @node-drag-over="handleDragOver"
-                                     @node-drag-end="handleDragEnd"
-                                     @node-drop="handleDrop" draggable :allow-drop="allowDrop" :allow-drag="allowDrag">
+                            <el-tree :data="grid.data" node-key="id" default-expand-all @node-drag-start="handleDragStart" @node-drag-enter="handleDragEnter" @node-drag-leave="handleDragLeave" @node-drag-over="handleDragOver" @node-drag-end="handleDragEnd" @node-drop="handleDrop" draggable :allow-drop="allowDrop" :allow-drag="allowDrag">
                             </el-tree>
                         </div>
                         <!--                    树结构换行-->
                         <div v-if="show==6">
                             <p>节点字数过多可以支持换行</p>
-                            <el-tree :data="data9" :props="defaultProps" @node-click="handleNodeClick" class="lineFeed"></el-tree>
+                            <el-tree :data="grid.data2" :props="grid.defaultProps" class="lineFeed"></el-tree>
                         </div>
                         <div v-if="show==7"></div>
                     </div>
                     <div v-else>
-                        <router-view :tableData="tableData" :options="options"/>
+                        <router-view/>
                     </div>
+
                 </div>
             </div>
         </el-main>
     </el-container>
-
 </template>
 
 <script>
@@ -211,6 +205,7 @@
         name: "demo",
         data(){
             return {
+                grid:require('../mock/grid'),
                 title:[{
                         a:'Table表格',
                         b:'用于展示多条结构类似的数据，可对数据进行排序、筛选、对比或其他自定义操作。'
@@ -242,163 +237,9 @@
                 },
                 //表格数据
                 Datas:'',
-                tableData: [{
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333
-                }],
-                //下拉列表框数据
-                options: [{
-                    value: '选项1',
-                    label: '黄金糕'
-                }, {
-                    value: '选项2',
-                    label: '双皮奶'
-                }, {
-                    value: '选项3',
-                    label: '蚵仔煎'
-                }, {
-                    value: '选项4',
-                    label: '龙须面'
-                }, {
-                    value: '选项5',
-                    label: '北京烤鸭'
-                }],
-                //tree树形控件
-                tree:false,
                 dialog:false,
-                data: [{
-                    id: 1,
-                    label: '一级 1',
-                    children: [{
-                        id: 4,
-                        label: '二级 1-1',
-                        children: [{
-                            id: 9,
-                            label: '三级 1-1-1'
-                        }, {
-                            id: 10,
-                            label: '三级 1-1-2'
-                        }]
-                    }]
-                }, {
-                    id: 2,
-                    label: '一级 2',
-                    children: [{
-                        id: 5,
-                        label: '二级 2-1'
-                    }, {
-                        id: 6,
-                        label: '二级 2-2'
-                    }]
-                }, {
-                    id: 3,
-                    label: '一级 3',
-                    children: [{
-                        id: 7,
-                        label: '二级 3-1'
-                    }, {
-                        id: 8,
-                        label: '二级 3-2'
-                    }]
-                }],
-                data1: [{
-                    label: '一级 1',
-                    children: [{
-                        label: '二级 1-1',
-                        children: [{
-                            label: '三级 1-1-1'
-                        }]
-                    }]
-                }, {
-                    label: '一级 2',
-                    children: [{
-                        label: '二级 2-1',
-                        children: [{
-                            label: '三级 2-1-1'
-                        }]
-                    }, {
-                        label: '二级 2-2',
-                        children: [{
-                            label: '三级 2-2-1'
-                        }]
-                    }]
-                }, {
-                    label: '一级 3',
-                    children: [{
-                        label: '二级 3-1',
-                        children: [{
-                            label: '三级 3-1-1'
-                        }]
-                    }, {
-                        label: '二级 3-2',
-                        children: [{
-                            label: '三级 3-2-1'
-                        }]
-                    }]
-                }],
-                //树结构换行
-                data9: [{
-                    label: '一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1一级 1',
-                    children: [{
-                        label: '二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1',
-                        children: [{
-                            label: '三级 1-1-1'
-                        }]
-                    }]
-                }, {
-                    label: '一级 2',
-                    children: [{
-                        label: '二级 2-1',
-                        children: [{
-                            label: '三级 2-1-1'
-                        }]
-                    }, {
-                        label: '二级 2-2',
-                        children: [{
-                            label: '三级 2-2-1'
-                        }]
-                    }]
-                }],
-                defaultProps: {
-                    children: 'children',
-                    label: 'label'
-                },
-                filterText:'',
                 show:1,
-                dia:'',
-                state:'',
+                tree:false
             }
         },
         methods:{
@@ -417,10 +258,6 @@
                 // console.log(key, keyPath);
             },
             handleSelect(index){
-                // console.log(index,indexPath);
-                // let str1 = '';
-                // str1 = index.slice(0,1);
-                // console.log(str1);
                 let str = '';
                 str = index.slice(-1);
                 this.show = str;
@@ -432,25 +269,6 @@
             formatter(row, column) {
                 return row.address;
             },//排序排列结束
-            //tree树形控件
-            handleNodeClick(data) {
-                console.log(data);
-            },
-            // 切换选项
-            handleNodeClick(node) {
-                this.valueTitle = node[this.props.label]
-                this.valueId = node[this.props.value]
-                this.$emit('getValue', this.valueId)
-                this.defaultExpandedKey = []
-            },
-            // 清除选中
-            clearHandle() {
-                this.valueTitle = ''
-                this.valueId = null
-                this.defaultExpandedKey = []
-                this.clearSelected()
-                this.$emit('getValue', null)
-            },
             /* 清空选中样式 */
             clearSelected() {
                 let allNode = document.querySelectorAll('#tree-option .el-tree-node')
@@ -490,14 +308,6 @@
             allowDrag(draggingNode) {
                 return draggingNode.data.label.indexOf('三级 3-2-2') === -1;
             },
-            // 清除选中
-            clearHandle() {
-                this.valueTitle = ''
-                this.valueId = null
-                this.defaultExpandedKey = []
-                this.clearSelected()
-                this.$emit('getValue', null)
-            },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
                 this.currentPage = 1;
@@ -515,7 +325,7 @@
             filterText(val){
                 this.$refs.tree2.filter(val);
             }
-        },
+        }
     }
 </script>
 
