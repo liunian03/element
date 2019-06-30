@@ -1,7 +1,7 @@
 <template>
 <!--     带斑马纹表格   -->
     <div>
-        使用带斑马纹的表格，可以更容易区分出不同行的数据。
+<!--        使用带斑马纹的表格，可以更容易区分出不同行的数据。-->
         <el-table :data="this.arr.tableData" stripe style="width: 100%">
             <el-table-column prop="date" label="日期" width="180">
             </el-table-column>

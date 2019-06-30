@@ -1,7 +1,7 @@
 <template>
 <!--    带状态表格-->
     <div>
-        <p>可将表格内容 highlight 显示，方便区分「成功、信息、警告、危险」等内容。</p>
+<!--        <p>可将表格内容 highlight 显示，方便区分「成功、信息、警告、危险」等内容。</p>-->
         <el-table :data="tableData" style="width: 100%" :row-class-name="tableRowClassName">
             <el-table-column prop="date" label="日期" width="180">
             </el-table-column>

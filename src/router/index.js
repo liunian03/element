@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import demo from '@/components/demo'
+import HelloWorld from '@/components/demo1.0'
+import demo from '@/components/demo2.0'
+import newDemo from '@/components/demo3.0'
+import tabList from '@/components/commonList/tablist'
+import combox from '@/components/commonList/combox'
+
+
 
 // table
 import tab1 from '@/components/BasedTables/tab1'
@@ -171,5 +176,23 @@ export default new Router({
             name: 'HelloWorld',
             component: HelloWorld
         },
-    ]
+        {
+            path: '/newdemo',
+            name: 'demo',
+            component: newDemo,
+            children:[
+                {
+                    path:'/newdemo/commonList/tablist',
+                    name:'tablist',
+                    component:tabList,
+                },
+                {
+                    path:'/newdemo/commonList/combox',
+                    name:'combox',
+                    component:combox,
+                },
+            ]
+        },
+    ],
+    linkActiveClass:'active'
 })
